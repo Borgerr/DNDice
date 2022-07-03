@@ -1,12 +1,15 @@
-import choices
+import choices, data
 
 def main():
-    # TODO: get continuous menu actions working.
-    # might require moving this loop to a function of its own in choices.py
-    while True:
+    d = data.Data()
+    choices.configure_menu(d)
+    choices.display_menu(d)
+    while not d.get_done():
         choice = input("What would you like to do? ")
-        if choice == "menu":
-            choices.display_menu()
+        if choice not in d.get_names():
+            print("Please enter a valid option.")
+        else:
+           d.do_the_thing(choice) 
 
 if __name__ == "__main__":
     main()
