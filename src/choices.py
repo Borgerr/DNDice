@@ -1,5 +1,6 @@
 import random           # random.randint
 import data             # Data class
+import rolls            # roll interpretations
 
 def display_menu(d):    # where d is a Data object
     """
@@ -17,12 +18,10 @@ def configure_menu(d):  # where d is a Data object
     d.add_choice("choice-command", function_used, "Description to be displayed.")
     """
     d.add_choice("menu", display_menu, "Display menu.") # keep at list top
-
     # add all other options under this line
     d.add_choice("undefined-roll", roll_any_number, "Roll any number. Displays without cool ASCII art.")
-
-
-
+    d.add_choice("d6", roll_d6, "Roll a d6 and show ASCII output.")
+    # seperation
     d.add_choice("quit", quit, "Quits the program.")    # keep at list bottom.
 
 def quit(d):            # where d is a Data object
@@ -47,3 +46,11 @@ def get_integer(prompt):
         except:
             print("Something else went wrong in our conversion. Please try again.")
     return n
+
+def roll_d6(d):
+    """
+    Plumbing from choice to corresponding function in rolls.py
+    """
+    roll = random.randint(1, 6)
+    print("You rolled a " + str(roll))
+    rolls.d6(roll)
