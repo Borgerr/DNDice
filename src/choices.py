@@ -42,7 +42,7 @@ def get_integer(prompt):
         try:
             n = int(n)
             break
-        except valueError:
+        except ValueError:
             print("Please enter a valid integer.")
         except:
             print("Something else went wrong in our conversion. Please try again.")
